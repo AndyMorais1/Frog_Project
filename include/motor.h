@@ -7,28 +7,21 @@
 
 class Motor {
 private:
-    // 4 indica que usamos um driver de 4 fios (ULN2003)
-    // A sequência 1, 3, 2, 4 é a correta para o 28BYJ-48 na AccelStepper
     AccelStepper _stepper;
-    long _stepsPerPhase;
+    const long POSICAO_BAIXO = 0;      
+    const long POSICAO_CIMA = 5500;    // Valor total do seu estendal
+    const int NUM_PARADAS = 6;         // Divisões do trajeto
 
 public:
-    // Construtor que recebe os pinos definidos no config.h
     Motor(uint8_t p1, uint8_t p2, uint8_t p3, uint8_t p4);
-
     void begin();
+    void update();
     
-    // Move para uma fase específica (0 a 6)
+    // Agora recebe o índice da fase (0 a 6) para calcular a altura
     void goToPhase(int phase);
     
-    // Retorna o sapo para a posição inicial (0)
-    void resetPosition();
-
-    // Deve ser chamado no loop principal (ou no update da Controller)
-    void update();
-
-    // Verifica se o motor ainda está se movendo
+    void resetToBottom();
     bool isMoving();
 };
 
-#endif
+#endif // MOTOR_H

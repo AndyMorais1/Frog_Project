@@ -18,8 +18,10 @@ private:
     Button _btnNext;
     Button _btnRestart;
 
-    //Variáveis
+    // Variáveis
     int _currentPhase;
+    unsigned long _lastAudioTime;
+    const unsigned long AUDIO_REPEAT_INTERVAL = 15000; // 15 segundos
 
     // Funções Auxiliares
     void _nextPhase();         // Gerencia o incremento da fase
