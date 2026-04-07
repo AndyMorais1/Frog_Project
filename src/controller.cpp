@@ -1,4 +1,6 @@
 #include "controller.h"
+#include "audio.h"
+#include "led.h"
 
 Controller::Controller() : 
     _audio(&Serial2, DFPLAYER_RX_PIN, DFPLAYER_TX_PIN),
