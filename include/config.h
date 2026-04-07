@@ -3,34 +3,27 @@
 
 #include <Arduino.h>
 
-// =============================================================================
-// DFPLAYER MINI (Serial2)
-// Nota: Conecte o TX do DFPlayer no RX do ESP32 e vice-versa. 
-// Use um resistor de 1k ohms na linha RX do DFPlayer para reduzir ruído.
-// =============================================================================
-#define DFPLAYER_RX_PIN 16  // Conecta no TX do DFPlayer
-#define DFPLAYER_TX_PIN 17  // Conecta no RX do DFPlayer (com resistor 1k)
+// --- DFPLAYER (UART2) ---
+#define DFPLAYER_RX_PIN   16 
+#define DFPLAYER_TX_PIN   17 
+#define DFPLAYER_BUSY_PIN 19 
 
-// =============================================================================
-// STEPPER MOTOR (28BYJ-48 com Driver ULN2003)
-// Sequência padrão para bibliotecas como a AccelStepper ou Stepper.h
-// =============================================================================
-#define STEPPER_PIN_1 26
-#define STEPPER_PIN_2 25
-#define STEPPER_PIN_3 33
-#define STEPPER_PIN_4 32
+// --- MOTOR STEPPER (28BYJ-48 + ULN2003) ---
+#define MOTOR_PIN_1 26
+#define MOTOR_PIN_2 25
+#define MOTOR_PIN_3 33
+#define MOTOR_PIN_4 32
 
-// =============================================================================
-// LEDS RGB (WS2812B / Neopixel)
-// =============================================================================
+// --- LEDS WS2812 ---
 #define LED_DATA_PIN 13
-#define NUM_LEDS     12     // Altere para a quantidade que estiver usando
+#define NUM_LEDS     12 // Ajuste conforme seu anel/fita
 
-// =============================================================================
-// BOTÕES (Input Pull-up)
-// Conexão: Pino <-> Botão <-> GND
-// =============================================================================
-#define BUTTON_A_PIN 14
-#define BUTTON_B_PIN 27
+// --- BOTÕES ---
+#define BTN_NEXT_PIN   14
+#define BTN_RESTART_PIN 27
+
+// --- LÓGICA DO PROJETO ---
+#define TOTAL_PHASES 7
+#define STEPS_PER_PHASE 512 // Ajuste este valor conforme a distância física entre as fases no seu fio
 
 #endif // CONFIG_H

@@ -1,9 +1,14 @@
 #include <Arduino.h>
+#include "controller.h"
 
-void setup() {
-  // put your setup code here, to run once:
+Controller _controller;
+
+void setup()
+{
+  _controller.begin();
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
+void loop()
+{
+  _controller.update();
 }

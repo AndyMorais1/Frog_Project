@@ -1,9 +1,8 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
-#include "controller.h"
-#include "config.h"
 #include <Arduino.h>
+#include "config.h"
 #include "audio.h"
 #include "led.h"
 #include "motor.h"
@@ -12,7 +11,21 @@
 class Controller
 {
 private:
-    //
+    // Instâncias dos componentes
+    Audio _audio;
+    Led _led;
+    Motor _motor;
+    Button _btnNext;
+    Button _btnRestart;
+
+    //Variáveis
+    int _currentPhase;
+
+    // Funções Auxiliares
+    void _nextPhase();         // Gerencia o incremento da fase
+    void _resetSystem();       // Volta para a fase 0 e reseta hardware
+    void _applyPhaseChanges(); // Aplica Áudio, LED e Motor para a fase atual
+
 public:
     Controller();
     void begin();
